@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Projects — Aditya Mahajan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--black:#000;--black2:#0a0a0a;--black3:#111;--black4:#1a1a1a;--black5:#222;--white:#fff;--white2:#f0f0f0;--white3:#ccc;--gray:#888;--gray2:#555;--blue:#2563eb;--blue2:#3b82f6;--blue-glow:rgba(37,99,235,0.35);--green:#22c55e;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--serif:'Playfair Display',serif;--sans:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;overflow-x:hidden;line-height:1.75;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:1;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid var(--border);background:rgba(0,0,0,0.92);backdrop-filter:blur(24px);}
+.logo{font-family:var(--serif);font-size:1.3rem;font-weight:900;color:var(--white);text-decoration:none;}.logo span{color:var(--blue2);}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--white);}
+.nav-hire{background:var(--blue)!important;color:var(--white)!important;padding:0.4rem 1rem;border-radius:3px;}
+.nav-hire:hover{background:var(--blue2)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);}
+.page-hero{padding:140px 6% 70px;background:var(--black);border-bottom:1px solid var(--border);position:relative;z-index:2;}
+.page-hero::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(37,99,235,0.07) 0%,transparent 65%);pointer-events:none;}
+section{position:relative;z-index:2;padding:80px 6%;}
+.lbl{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.28em;color:var(--gray2);text-transform:uppercase;margin-bottom:0.8rem;}
+.h1{font-family:var(--serif);font-size:clamp(2rem,3.8vw,3.4rem);font-weight:900;letter-spacing:-0.03em;line-height:1.05;color:var(--white);}
+.h1 em{font-style:normal;color:var(--blue2);}
+.rv{opacity:0;transform:translateY(26px);transition:opacity 0.75s cubic-bezier(.16,1,.3,1),transform 0.75s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+.btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.72rem 1.6rem;border-radius:3px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.22s;border:none;cursor:pointer;}
+.b-blue{background:var(--blue);color:#fff;}.b-blue:hover{background:var(--blue2);box-shadow:0 0 24px var(--blue-glow);}
+.b-ghost{background:transparent;color:var(--white2);border:1px solid var(--border2);}.b-ghost:hover{border-color:rgba(255,255,255,0.35);}
+.b-gray{background:var(--black4);color:var(--white3);border:1px solid var(--border);}.b-gray:hover{border-color:var(--gray2);}
+.b-green{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.3);}.b-green:hover{background:rgba(34,197,94,0.2);}
+.t{font-family:var(--mono);font-size:0.62rem;padding:0.18rem 0.5rem;border-radius:2px;letter-spacing:0.03em;}
+.tb{background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.24);color:#93c5fd;}
+.tw2{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--white3);}
+.tg{background:rgba(136,136,136,0.08);border:1px solid rgba(136,136,136,0.16);color:var(--gray);}
+/* PROJECT CARDS */
+.proj-list{display:flex;flex-direction:column;gap:2px;margin-top:3rem;}
+.pc{background:var(--black2);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:border-color 0.25s;}
+.pc:hover{border-color:rgba(255,255,255,0.15);}
+.pc-inner{display:grid;grid-template-columns:80px 1fr auto;gap:0;align-items:stretch;}
+.pc-num{background:var(--black3);border-right:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.5rem;font-weight:900;color:rgba(255,255,255,0.06);padding:2rem 1rem;}
+.pc-content{padding:2rem;}
+.pc-top{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.7rem;flex-wrap:wrap;}
+.pc-bdg{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;padding:0.18rem 0.5rem;border-radius:2px;}
+.bd-done{background:rgba(255,255,255,0.05);border:1px solid var(--border2);color:var(--white3);}
+.bd-wip{background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.24);color:#93c5fd;}
+.pc-title{font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;}
+.pc-outcome{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.18);border-radius:3px;padding:0.45rem 0.8rem;margin-bottom:0.9rem;font-family:var(--mono);font-size:0.67rem;color:var(--green);display:inline-block;}
+.pc-desc{color:var(--gray);font-size:0.85rem;line-height:1.85;margin-bottom:1.2rem;}
+.pc-desc li{margin-left:1.1rem;margin-bottom:0.38rem;}
+.pc-desc strong{color:var(--white3);}
+.pc-actions{padding:2rem;display:flex;flex-direction:column;justify-content:center;gap:0.6rem;border-left:1px solid var(--border);min-width:180px;}
+/* footer */
+footer{background:var(--black);border-top:1px solid var(--border);padding:1.5rem 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;position:relative;z-index:2;}
+.fc{font-family:var(--mono);font-size:0.64rem;color:var(--gray2);}
+.fc span{color:var(--white3);}
+#btt{position:fixed;bottom:1.8rem;right:1.8rem;width:38px;height:38px;background:var(--black3);border:1px solid var(--border2);border-radius:3px;display:flex;align-items:center;justify-content:center;z-index:90;opacity:0;transform:translateY(12px);transition:all 0.28s;color:var(--white);font-size:0.82rem;text-decoration:none;}
+#btt.on{opacity:1;transform:translateY(0);}
+@media(max-width:900px){.nav-links{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;}.nav-links.open{display:flex;}.hamburger{display:flex;}}
+@media(max-width:768px){nav{padding:0 5%;}section{padding:60px 5%;}.page-hero{padding:110px 5% 50px;}.pc-inner{grid-template-columns:1fr;}.pc-num{display:none;}.pc-actions{border-left:none;border-top:1px solid var(--border);flex-direction:row;flex-wrap:wrap;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">AM<span>.</span></a>
+  <ul class="nav-links" id="navL">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="dashboards.html">Dashboards</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="nav-hire">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="lbl rv">Portfolio</div>
+  <div class="h1 rv d1">Featured <em>Projects</em></div>
+  <p class="rv d2" style="color:var(--gray);font-size:0.92rem;max-width:540px;margin-top:0.8rem;line-height:1.85;">End-to-end analytics projects — from raw messy data to boardroom-ready insights. Click <strong style="color:var(--white3);">View Full Analysis</strong> to see the complete deep dive for any project.</p>
+</div>
+
+<section>
+  <div class="proj-list">
+
+    <!-- PROJECT 01 -->
+    <div class="pc rv">
+      <div class="pc-inner">
+        <div class="pc-num">01</div>
+        <div class="pc-content">
+          <div class="pc-top">
+            <span class="pc-bdg bd-done">✓ Completed</span>
+            <span class="t tb">Python</span><span class="t tb">Power BI</span><span class="t tw2">DAX</span><span class="t tg">PostgreSQL</span>
+          </div>
+          <div class="pc-title">Sales Pipeline Analytics & Revenue Optimization</div>
+          <div class="pc-outcome">→ Projected 12–15% pipeline efficiency gain</div>
+          <ul class="pc-desc">
+            <li>Engineered synthetic CRM dataset with <strong>1,000+ records</strong> simulating a full B2B sales funnel across 5 stages and 6 products.</li>
+            <li>Designed 6-visual Power BI dashboard with <strong>8 advanced DAX measures</strong> including MoM trend, rolling averages, and win-rate by region.</li>
+            <li>Identified <strong>₹12M bottleneck</strong> at Discovery stage and East region underperformance (56.8% win rate, 137-day cycle).</li>
+            <li>Delivered consultant pitch with 3 prioritised business recommendations.</li>
+          </ul>
+        </div>
+        <div class="pc-actions">
+          <a href="dashboards.html#project01" class="btn b-blue">View Full Analysis</a>
+          <a href="https://github.com/Aditya9740/sales-pipeline-analytics" class="btn b-gray" target="_blank">⬡ GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 02 -->
+    <div class="pc rv d1">
+      <div class="pc-inner">
+        <div class="pc-num">02</div>
+        <div class="pc-content">
+          <div class="pc-top">
+            <span class="pc-bdg bd-done">✓ Completed</span>
+            <span class="t tb">Python</span><span class="t tw2">PostgreSQL</span><span class="t tb">Power BI</span><span class="t tg">pandas</span>
+          </div>
+          <div class="pc-title">Vendor Spend Intelligence & Cost Optimization System</div>
+          <div class="pc-outcome">→ Identified ₹2.1 Cr annualised cost savings (7–8%)</div>
+          <ul class="pc-desc">
+            <li>Analysed <strong>₹41.54Cr of spend</strong> across 20 vendors, 10 departments, and 2 years of Indian B2B procurement data.</li>
+            <li>Built executive Power BI dashboard with vendor risk matrix, category-spend heatmaps, and cost savings scenario model.</li>
+            <li>Flagged <strong>top 3 vendors = 42% spend concentration risk</strong> and IT/Procurement departments 18–22% over budget.</li>
+            <li>Produced consultant-grade portfolio document with actionable renegotiation strategy.</li>
+          </ul>
+        </div>
+        <div class="pc-actions">
+          <a href="dashboards.html#project02" class="btn b-blue">View Full Analysis</a>
+          <a href="https://github.com/Aditya9740" class="btn b-gray" target="_blank">⬡ GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 03 -->
+    <div class="pc rv d2">
+      <div class="pc-inner">
+        <div class="pc-num">03</div>
+        <div class="pc-content">
+          <div class="pc-top">
+            <span class="pc-bdg bd-wip">🔨 In Progress</span>
+            <span class="t tb">Python</span><span class="t tw2">SQL</span><span class="t tb">Power BI</span><span class="t tb">Scikit-learn</span>
+          </div>
+          <div class="pc-title">Customer Churn Analytics & Retention Strategy</div>
+          <div class="pc-outcome">→ Reducing revenue loss from customer churn</div>
+          <ul class="pc-desc">
+            <li>Building churn prediction model on telecom dataset using logistic regression and decision trees.</li>
+            <li>Designing retention-strategy dashboard to quantify revenue at risk and simulate intervention scenarios.</li>
+            <li>Full analysis page coming soon — <strong>check back shortly</strong>.</li>
+          </ul>
+        </div>
+        <div class="pc-actions">
+          <a href="https://github.com/Aditya9740" class="btn b-ghost" target="_blank">⬡ GitHub (Soon)</a>
+          <a href="contact.html" class="btn b-gray">Get Notified</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="rv" style="margin-top:3rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;padding:2.5rem;background:var(--black2);border:1px solid var(--border);border-radius:4px;text-align:center;">
+    <div style="width:100%;margin-bottom:0.5rem;">
+      <div style="font-family:var(--serif);font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;">Want similar results for your data?</div>
+      <p style="color:var(--gray);font-size:0.87rem;">I offer the same end-to-end analytics as a service — dashboards, cost analysis, and sales intelligence.</p>
+    </div>
+    <a href="services.html" class="btn b-blue">View My Services</a>
+    <a href="contact.html" class="btn b-ghost">Start a Project</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fc">© 2026 <span>Aditya Mahajan</span> · All rights reserved</div>
+  <div class="fc" style="display:flex;gap:1.2rem;">
+    <a href="index.html" style="color:var(--gray2);text-decoration:none;font-family:var(--mono);font-size:0.64rem;">Home</a>
+    <a href="services.html" style="color:var(--gray2);text-decoration:none;font-family:var(--mono);font-size:0.64rem;">Services</a>
+    <a href="contact.html" style="color:var(--gray2);text-decoration:none;font-family:var(--mono);font-size:0.64rem;">Contact</a>
+  </div>
+</footer>
+<a href="#" id="btt">↑</a>
+<script>
+const rvs=document.querySelectorAll('.rv');
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:0.06});
+rvs.forEach(r=>io.observe(r));
+window.addEventListener('scroll',()=>{document.getElementById('btt').classList.toggle('on',window.scrollY>300);});
+function toggleNav(){document.getElementById('navL').classList.toggle('open');}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navL').classList.remove('open')));
+</script>
+</body>
+</html>

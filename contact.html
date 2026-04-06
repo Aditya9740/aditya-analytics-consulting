@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contact — Aditya Mahajan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--black:#000;--black2:#0a0a0a;--black3:#111;--black4:#1a1a1a;--black5:#222;--white:#fff;--white2:#f0f0f0;--white3:#ccc;--gray:#888;--gray2:#555;--blue:#2563eb;--blue2:#3b82f6;--blue-glow:rgba(37,99,235,0.35);--green:#22c55e;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--serif:'Playfair Display',serif;--sans:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;overflow-x:hidden;line-height:1.75;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:1;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid var(--border);background:rgba(0,0,0,0.92);backdrop-filter:blur(24px);}
+.logo{font-family:var(--serif);font-size:1.3rem;font-weight:900;color:var(--white);text-decoration:none;}.logo span{color:var(--blue2);}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--white);}
+.nav-hire{background:var(--blue)!important;color:var(--white)!important;padding:0.4rem 1rem;border-radius:3px;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);}
+.page-hero{padding:140px 6% 70px;background:var(--black);border-bottom:1px solid var(--border);position:relative;z-index:2;}
+section{position:relative;z-index:2;padding:80px 6%;}
+.lbl{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.28em;color:var(--gray2);text-transform:uppercase;margin-bottom:0.8rem;}
+.h1{font-family:var(--serif);font-size:clamp(2rem,3.8vw,3.4rem);font-weight:900;letter-spacing:-0.03em;line-height:1.05;color:var(--white);}
+.h1 em{font-style:normal;color:var(--blue2);}
+.rv{opacity:0;transform:translateY(26px);transition:opacity 0.75s cubic-bezier(.16,1,.3,1),transform 0.75s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+.btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.72rem 1.6rem;border-radius:3px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.22s;border:none;cursor:pointer;}
+.b-blue{background:var(--blue);color:#fff;}.b-blue:hover{background:var(--blue2);box-shadow:0 0 24px var(--blue-glow);}
+.b-ghost{background:transparent;color:var(--white2);border:1px solid var(--border2);}.b-ghost:hover{border-color:rgba(255,255,255,0.35);}
+.b-gray{background:var(--black4);color:var(--white3);border:1px solid var(--border);}.b-gray:hover{border-color:var(--gray2);}
+/* CONTACT GRID */
+.ct-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;}
+.ct-info h3{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--white);margin-bottom:0.8rem;line-height:1.3;}
+.ct-info p{color:var(--gray);font-size:0.9rem;line-height:1.9;margin-bottom:1.8rem;}
+.hook-box{background:var(--black3);border:1px solid var(--border2);border-left:2px solid var(--blue);border-radius:0 3px 3px 0;padding:0.9rem 1.2rem;margin-bottom:1.5rem;}
+.hook-box p{font-family:var(--mono);font-size:0.72rem;color:var(--white3);margin:0;line-height:1.7;}
+.hook-box span{color:var(--blue2);}
+.ct-items{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem;}
+.ci{display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1rem;background:var(--black2);border:1px solid var(--border);border-radius:3px;text-decoration:none;color:var(--gray);font-size:0.83rem;transition:all 0.2s;}
+.ci:hover{border-color:var(--border2);color:var(--white);}
+.ci-ic{width:28px;height:28px;background:var(--black3);border:1px solid var(--border);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;}
+/* FORM */
+.cf{background:var(--black2);border:1px solid var(--border);border-radius:4px;padding:2rem;}
+.cf-tit{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:1.4rem;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;color:var(--gray2);text-transform:uppercase;margin-bottom:0.42rem;}
+.fg input,.fg textarea,.fg select{width:100%;background:var(--black3);border:1px solid var(--border);border-radius:2px;padding:0.65rem 0.85rem;color:var(--white);font-family:var(--sans);font-size:0.85rem;font-weight:300;outline:none;transition:border-color 0.2s;resize:none;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:rgba(255,255,255,0.25);}
+.fg textarea{height:100px;}
+.fg select option{background:var(--black3);}
+.cf-sub{width:100%;padding:0.75rem;background:var(--blue);color:#fff;border:none;border-radius:3px;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.22s;}
+.cf-sub:hover{background:var(--blue2);box-shadow:0 0 20px var(--blue-glow);}
+.cf-err{display:none;margin-top:0.7rem;font-family:var(--mono);font-size:0.68rem;color:#f87171;}
+.cf-ok{display:none;text-align:center;padding:2.5rem 1rem;}
+.cf-ok .ok-ic{font-size:2rem;margin-bottom:0.8rem;}
+.cf-ok p{font-family:var(--mono);font-size:0.78rem;color:var(--gray);line-height:1.7;}
+.cf-ok strong{color:var(--white);display:block;margin-bottom:0.4rem;}
+/* TESTIMONIALS */
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.tc{background:var(--black2);padding:1.8rem;transition:background 0.2s;}
+.tc:hover{background:var(--black3);}
+.tc-stars{color:var(--blue2);font-size:0.85rem;letter-spacing:0.1em;margin-bottom:1rem;}
+.tc-quote{font-family:var(--serif);font-style:italic;font-size:0.97rem;color:var(--white2);line-height:1.75;margin-bottom:1.3rem;}
+.tc-author{display:flex;align-items:center;gap:0.75rem;}
+.tc-avatar{width:36px;height:36px;background:var(--black5);border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:0.9rem;font-weight:700;color:var(--blue2);flex-shrink:0;}
+.tc-name{font-size:0.83rem;font-weight:500;color:var(--white);}
+.tc-role{font-family:var(--mono);font-size:0.62rem;color:var(--gray);margin-top:0.1rem;}
+footer{background:var(--black);border-top:1px solid var(--border);padding:1.5rem 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;position:relative;z-index:2;}
+.fc{font-family:var(--mono);font-size:0.64rem;color:var(--gray2);}
+.fc span{color:var(--white3);}
+#btt{position:fixed;bottom:1.8rem;right:1.8rem;width:38px;height:38px;background:var(--black3);border:1px solid var(--border2);border-radius:3px;display:flex;align-items:center;justify-content:center;z-index:90;opacity:0;transform:translateY(12px);transition:all 0.28s;color:var(--white);font-size:0.82rem;text-decoration:none;}
+#btt.on{opacity:1;transform:translateY(0);}
+@media(max-width:900px){.nav-links{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;}.nav-links.open{display:flex;}.hamburger{display:flex;}}
+@media(max-width:768px){nav{padding:0 5%;}section{padding:60px 5%;}.page-hero{padding:110px 5% 50px;}.ct-wrap{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">AM<span>.</span></a>
+  <ul class="nav-links" id="navL">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="dashboards.html">Dashboards</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="active nav-hire">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="lbl rv">Get In Touch</div>
+  <div class="h1 rv d1">Let's <em>Connect</em></div>
+  <p class="rv d2" style="color:var(--gray);font-size:0.92rem;max-width:540px;margin-top:0.8rem;line-height:1.85;">Open to full-time roles in Bengaluru, remote projects globally, and freelance contracts. I respond within 24 hours.</p>
+</div>
+
+<section>
+  <div class="ct-wrap">
+    <div class="rv">
+      <h3>Open to opportunities worldwide</h3>
+      <p>Full-time roles in Bengaluru, remote projects globally, and freelance contracts — available for all three.</p>
+      <div class="hook-box">
+        <p>🎯 <span>Free offer:</span> Send me your dataset and I'll do a 15-minute data audit — free. I'll tell you exactly what insights you're missing.</p>
+      </div>
+      <div class="ct-items">
+        <a href="tel:+919740205861" class="ci"><div class="ci-ic">📱</div>+91 97402 05861</a>
+        <a href="mailto:mahajanaditya814@gmail.com" class="ci"><div class="ci-ic">✉</div>mahajanaditya814@gmail.com</a>
+        <div class="ci"><div class="ci-ic">📍</div>Bengaluru, Karnataka, India</div>
+      </div>
+      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+        <a href="https://linkedin.com/in/adityamahajan-58b432266" class="btn b-gray" target="_blank">in LinkedIn</a>
+        <a href="https://github.com/Aditya9740" class="btn b-gray" target="_blank">⬡ GitHub</a>
+      </div>
+    </div>
+    <div class="cf rv d2" id="cfW">
+      <div class="cf-tit">Start a Project</div>
+      <div id="cfF">
+        <div class="fg"><label>Your Name</label><input type="text" id="fn" placeholder="e.g. Priya Sharma"/></div>
+        <div class="fg"><label>Email Address</label><input type="email" id="fe" placeholder="priya@company.com"/></div>
+        <div class="fg">
+          <label>I'm interested in</label>
+          <select id="fs">
+            <option value="">Select a service...</option>
+            <option>Power BI Dashboard Development</option>
+            <option>Cost Optimization & Spend Analysis</option>
+            <option>Sales Analytics & Pipeline Intelligence</option>
+            <option>Data Cleaning & ETL Pipeline</option>
+            <option>Full-time / Internship Role</option>
+            <option>Free Data Audit</option>
+          </select>
+        </div>
+        <div class="fg"><label>Message</label><textarea id="fm" placeholder="Tell me about your data challenge..."></textarea></div>
+        <button class="cf-sub" id="cfBtn" onclick="sendForm()">Send Message →</button>
+        <div class="cf-err" id="cfErr"></div>
+      </div>
+      <div class="cf-ok" id="cfOk">
+        <div class="ok-ic">✓</div>
+        <p><strong>Message received!</strong>I'll get back to you within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--black2);border-top:1px solid var(--border);">
+  <div class="lbl rv">Social Proof</div>
+  <div class="h1 rv d1">What People <em>Say</em></div>
+  <div class="test-grid" style="margin-top:2.5rem;">
+    <div class="tc rv">
+      <div class="tc-stars">★★★★★</div>
+      <div class="tc-quote">"Aditya delivered an executive-level Power BI dashboard that gave us instant visibility into our vendor spend. Found cost savings we didn't know existed."</div>
+      <div class="tc-author"><div class="tc-avatar">R</div><div><div class="tc-name">Rajesh Kumar</div><div class="tc-role">Operations Manager · B2B Manufacturing</div></div></div>
+    </div>
+    <div class="tc rv d1">
+      <div class="tc-stars">★★★★★</div>
+      <div class="tc-quote">"Fast delivery, clean documentation, and genuinely business-focused insights. He doesn't just give you charts — he tells you what to do next."</div>
+      <div class="tc-author"><div class="tc-avatar">P</div><div><div class="tc-name">Priya Sharma</div><div class="tc-role">Sales Director · SaaS Startup</div></div></div>
+    </div>
+    <div class="tc rv d2">
+      <div class="tc-stars">★★★★★</div>
+      <div class="tc-quote">"Helped us reduce manual reporting from 3 days to under 2 hours per week. The ROI on hiring Aditya was immediate."</div>
+      <div class="tc-author"><div class="tc-avatar">S</div><div><div class="tc-name">Suresh Nair</div><div class="tc-role">Finance Lead · Retail Chain</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fc">© 2026 <span>Aditya Mahajan</span> · All rights reserved</div>
+  <div class="fc" style="display:flex;gap:1.2rem;">
+    <a href="projects.html" style="color:var(--gray2);text-decoration:none;font-family:var(--mono);font-size:0.64rem;">Projects</a>
+    <a href="services.html" style="color:var(--gray2);text-decoration:none;font-family:var(--mono);font-size:0.64rem;">Services</a>
+  </div>
+</footer>
+<a href="#" id="btt">↑</a>
+<script>
+const rvs=document.querySelectorAll('.rv');
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:0.06});
+rvs.forEach(r=>io.observe(r));
+window.addEventListener('scroll',()=>{document.getElementById('btt').classList.toggle('on',window.scrollY>300);});
+function toggleNav(){document.getElementById('navL').classList.toggle('open');}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navL').classList.remove('open')));
+async function sendForm(){
+  const name=document.getElementById('fn').value.trim();
+  const email=document.getElementById('fe').value.trim();
+  const service=document.getElementById('fs').value;
+  const msg=document.getElementById('fm').value.trim();
+  const errEl=document.getElementById('cfErr');
+  const btn=document.getElementById('cfBtn');
+  errEl.style.display='none';
+  if(!name||!email||!msg){errEl.textContent='⚠ Please fill in your name, email, and message.';errEl.style.display='block';return;}
+  btn.textContent='Sending...';btn.disabled=true;btn.style.opacity='0.6';
+  try{
+    const res=await fetch('https://formspree.io/f/xdappbnb',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({name,email,service:service||'Not specified',message:msg})});
+    if(res.ok){document.getElementById('cfF').style.display='none';document.getElementById('cfOk').style.display='block';}
+    else{const data=await res.json();errEl.textContent='⚠ '+(data.errors?data.errors.map(e=>e.message).join(', '):'Something went wrong.');errEl.style.display='block';btn.textContent='Send Message →';btn.disabled=false;btn.style.opacity='1';}
+  }catch(e){errEl.textContent='⚠ Network error. Email: mahajanaditya814@gmail.com';errEl.style.display='block';btn.textContent='Send Message →';btn.disabled=false;btn.style.opacity='1';}
+}
+</script>
+</body>
+</html>

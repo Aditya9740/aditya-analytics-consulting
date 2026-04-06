@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Services — Aditya Mahajan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--black:#000;--black2:#0a0a0a;--black3:#111;--black4:#1a1a1a;--black5:#222;--white:#fff;--white2:#f0f0f0;--white3:#ccc;--gray:#888;--gray2:#555;--blue:#2563eb;--blue2:#3b82f6;--blue-glow:rgba(37,99,235,0.35);--green:#22c55e;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--serif:'Playfair Display',serif;--sans:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;overflow-x:hidden;line-height:1.75;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:1;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid var(--border);background:rgba(0,0,0,0.92);backdrop-filter:blur(24px);}
+.logo{font-family:var(--serif);font-size:1.3rem;font-weight:900;color:var(--white);text-decoration:none;}.logo span{color:var(--blue2);}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--white);}
+.nav-hire{background:var(--blue)!important;color:var(--white)!important;padding:0.4rem 1rem;border-radius:3px;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);}
+.page-hero{padding:140px 6% 70px;background:var(--black);border-bottom:1px solid var(--border);position:relative;z-index:2;}
+.page-hero::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:400px;background:radial-gradient(ellipse,rgba(37,99,235,0.07) 0%,transparent 65%);pointer-events:none;}
+section{position:relative;z-index:2;padding:80px 6%;}
+.lbl{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.28em;color:var(--gray2);text-transform:uppercase;margin-bottom:0.8rem;}
+.h1{font-family:var(--serif);font-size:clamp(2rem,3.8vw,3.4rem);font-weight:900;letter-spacing:-0.03em;line-height:1.05;color:var(--white);}
+.h1 em{font-style:normal;color:var(--blue2);}
+.rv{opacity:0;transform:translateY(26px);transition:opacity 0.75s cubic-bezier(.16,1,.3,1),transform 0.75s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+.btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.72rem 1.6rem;border-radius:3px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.22s;border:none;cursor:pointer;}
+.b-blue{background:var(--blue);color:#fff;}.b-blue:hover{background:var(--blue2);box-shadow:0 0 24px var(--blue-glow);}
+.b-ghost{background:transparent;color:var(--white2);border:1px solid var(--border2);}.b-ghost:hover{border-color:rgba(255,255,255,0.35);}
+.b-gray{background:var(--black4);color:var(--white3);border:1px solid var(--border);}.b-gray:hover{border-color:var(--gray2);}
+/* WHY ME TAGS */
+.why-row{display:flex;gap:0.8rem;flex-wrap:wrap;margin:1.5rem 0 3rem;}
+.why-tag{background:var(--black3);border:1px solid var(--border2);color:var(--white3);font-family:var(--mono);font-size:0.65rem;padding:0.3rem 0.75rem;border-radius:2px;}
+/* SERVICE CARDS */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:2rem;}
+.sv{background:var(--black2);padding:2rem;display:flex;flex-direction:column;transition:background 0.2s;}
+.sv:hover{background:var(--black3);}
+.sv-ico{font-size:1.8rem;margin-bottom:1rem;}
+.sv-tit{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;}
+.sv-desc{color:var(--gray);font-size:0.83rem;line-height:1.8;margin-bottom:1.2rem;flex:1;}
+.sv-outcomes{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.4rem;}
+.sv-out{font-family:var(--mono);font-size:0.65rem;color:var(--green);display:flex;align-items:center;gap:0.5rem;}
+.sv-out::before{content:'→';color:var(--blue2);}
+.sv-price{font-family:var(--mono);font-size:0.7rem;color:var(--gray2);border-top:1px solid var(--border);padding-top:1rem;margin-top:auto;}
+.sv-price span{color:var(--white3);}
+/* PRICING NOTE */
+.pricing-note{background:var(--black2);border:1px solid var(--border);border-radius:4px;padding:1.4rem 1.8rem;display:flex;align-items:flex-start;gap:1rem;margin-bottom:3rem;}
+.pn-text{font-family:var(--mono);font-size:0.72rem;color:var(--gray);line-height:1.7;}
+.pn-text strong{color:var(--white3);}
+/* FINAL CTA */
+.final-cta{background:var(--black3);border:1px solid var(--border);border-radius:4px;padding:4rem;text-align:center;position:relative;overflow:hidden;}
+.final-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:300px;background:radial-gradient(ellipse,rgba(37,99,235,0.08) 0%,transparent 70%);pointer-events:none;}
+footer{background:var(--black);border-top:1px solid var(--border);padding:1.5rem 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;position:relative;z-index:2;}
+.fc{font-family:var(--mono);font-size:0.64rem;color:var(--gray2);}
+.fc span{color:var(--white3);}
+#btt{position:fixed;bottom:1.8rem;right:1.8rem;width:38px;height:38px;background:var(--black3);border:1px solid var(--border2);border-radius:3px;display:flex;align-items:center;justify-content:center;z-index:90;opacity:0;transform:translateY(12px);transition:all 0.28s;color:var(--white);font-size:0.82rem;text-decoration:none;}
+#btt.on{opacity:1;transform:translateY(0);}
+@media(max-width:900px){.nav-links{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;}.nav-links.open{display:flex;}.hamburger{display:flex;}}
+@media(max-width:768px){nav{padding:0 5%;}section{padding:60px 5%;}.page-hero{padding:110px 5% 50px;}.final-cta{padding:2.5rem 1.5rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">AM<span>.</span></a>
+  <ul class="nav-links" id="navL">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="dashboards.html">Dashboards</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="contact.html" class="nav-hire">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="lbl rv">Work With Me</div>
+  <div class="h1 rv d1">What I <em>Deliver</em></div>
+  <p class="rv d2" style="color:var(--gray);font-size:0.92rem;max-width:560px;margin-top:0.8rem;line-height:1.85;">Business-focused analytics — not just charts. Every deliverable is tied to a real outcome: reduce costs, improve conversions, or find revenue leaks.</p>
+</div>
+
+<section>
+  <div class="why-row rv">
+    <span class="why-tag">⚡ Fast Delivery</span>
+    <span class="why-tag">📈 ROI-Driven Insights</span>
+    <span class="why-tag">🎯 Business-Focused</span>
+    <span class="why-tag">🌍 Remote-Ready</span>
+    <span class="why-tag">✅ Consultant-Grade Docs</span>
+  </div>
+
+  <div class="svc-grid">
+    <div class="sv rv">
+      <div class="sv-ico">📊</div>
+      <div class="sv-tit">Power BI Dashboard Development</div>
+      <div class="sv-desc">Custom interactive dashboards tailored to your KPIs — from raw data to live, shareable dashboards with drill-down capability.</div>
+      <div class="sv-outcomes">
+        <span class="sv-out">Reduce manual reporting time by 40–60%</span>
+        <span class="sv-out">Real-time visibility into business performance</span>
+        <span class="sv-out">Executive-grade visuals for stakeholders</span>
+      </div>
+      <div class="sv-price">Starting from <span>₹8,000</span> · Delivery in 5–7 days</div>
+    </div>
+    <div class="sv rv d1">
+      <div class="sv-ico">💰</div>
+      <div class="sv-tit">Cost Optimization & Spend Analysis</div>
+      <div class="sv-desc">Deep-dive procurement and vendor spend analysis to identify hidden cost leakages, over-spend categories, and savings opportunities.</div>
+      <div class="sv-outcomes">
+        <span class="sv-out">Identify 5–10% cost reduction opportunities</span>
+        <span class="sv-out">Find revenue leaks in procurement</span>
+        <span class="sv-out">Vendor risk scoring & benchmarking</span>
+      </div>
+      <div class="sv-price">Starting from <span>₹10,000</span> · Delivery in 7–10 days</div>
+    </div>
+    <div class="sv rv d2">
+      <div class="sv-ico">🚀</div>
+      <div class="sv-tit">Sales Analytics & Pipeline Intelligence</div>
+      <div class="sv-desc">End-to-end sales funnel analysis — identify conversion bottlenecks, top-performing reps, and revenue forecast models.</div>
+      <div class="sv-outcomes">
+        <span class="sv-out">Improve pipeline conversion rates</span>
+        <span class="sv-out">Identify where deals are getting stuck</span>
+        <span class="sv-out">Accurate revenue forecasting</span>
+      </div>
+      <div class="sv-price">Starting from <span>₹8,000</span> · Delivery in 5–7 days</div>
+    </div>
+    <div class="sv rv d3">
+      <div class="sv-ico">🔄</div>
+      <div class="sv-tit">Data Cleaning & ETL Pipeline</div>
+      <div class="sv-desc">Transform messy, inconsistent spreadsheets and databases into clean, analysis-ready datasets with Python/SQL automation.</div>
+      <div class="sv-outcomes">
+        <span class="sv-out">Eliminate errors from manual data entry</span>
+        <span class="sv-out">Automated recurring data pipelines</span>
+        <span class="sv-out">Ready-to-analyze structured data</span>
+      </div>
+      <div class="sv-price">Starting from <span>₹5,000</span> · Delivery in 3–5 days</div>
+    </div>
+  </div>
+
+  <div class="pricing-note rv">
+    <div style="font-size:1.2rem;flex-shrink:0;margin-top:0.1rem;">💡</div>
+    <div class="pn-text"><strong>Flexible Pricing</strong> — All prices are starting points and vary by scope, complexity, and dataset size. <strong>Not sure what you need?</strong> Send me your dataset for a free 15-minute audit and I'll suggest the best approach. Remote and international clients welcome.</div>
+  </div>
+
+  <div class="final-cta rv">
+    <div style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:var(--white);margin-bottom:0.8rem;position:relative;">Ready to turn your data into results?</div>
+    <p style="color:var(--gray);font-size:0.9rem;max-width:420px;margin:0 auto 2.2rem;position:relative;">Whether it's reducing costs, improving conversions, or finding revenue leaks — let's get started.</p>
+    <div style="display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;position:relative;">
+      <a href="contact.html" class="btn b-blue">Start a Project</a>
+      <a href="mailto:mahajanaditya814@gmail.com?subject=Free Data Audit Request" class="btn b-ghost">Get Free Data Audit</a>
+      <a href="tel:+919740205861" class="btn b-gray">📱 Call Me</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fc">© 2026 <span>Aditya Mahajan</span> · All rights reserved</div>
+  <div class="fc" style="display:flex;gap:1.2rem;">
+    <a href="projects.html" style="color:var(--gray2);text-decoration:none;font-family:var(--mono);font-size:0.64rem;">Projects</a>
+    <a href="contact.html" style="color:var(--gray2);text-decoration:none;font-family:var(--mono);font-size:0.64rem;">Contact</a>
+  </div>
+</footer>
+<a href="#" id="btt">↑</a>
+<script>
+const rvs=document.querySelectorAll('.rv');
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:0.06});
+rvs.forEach(r=>io.observe(r));
+window.addEventListener('scroll',()=>{document.getElementById('btt').classList.toggle('on',window.scrollY>300);});
+function toggleNav(){document.getElementById('navL').classList.toggle('open');}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navL').classList.remove('open')));
+</script>
+</body>
+</html>

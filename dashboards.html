@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Project Deep Dives — Aditya Mahajan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--black:#000;--black2:#0a0a0a;--black3:#111;--black4:#1a1a1a;--black5:#222;--white:#fff;--white2:#f0f0f0;--white3:#ccc;--gray:#888;--gray2:#555;--blue:#2563eb;--blue2:#3b82f6;--blue-glow:rgba(37,99,235,0.35);--green:#22c55e;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--serif:'Playfair Display',serif;--sans:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;overflow-x:hidden;line-height:1.75;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:1;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid var(--border);background:rgba(0,0,0,0.92);backdrop-filter:blur(24px);}
+.logo{font-family:var(--serif);font-size:1.3rem;font-weight:900;color:var(--white);text-decoration:none;}.logo span{color:var(--blue2);}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--white);}
+.nav-hire{background:var(--blue)!important;color:var(--white)!important;padding:0.4rem 1rem;border-radius:3px;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);}
+.page-hero{padding:140px 6% 70px;background:var(--black);border-bottom:1px solid var(--border);position:relative;z-index:2;}
+section{position:relative;z-index:2;padding:80px 6%;}
+.lbl{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.28em;color:var(--gray2);text-transform:uppercase;margin-bottom:0.8rem;}
+.h1{font-family:var(--serif);font-size:clamp(2rem,3.8vw,3.4rem);font-weight:900;letter-spacing:-0.03em;line-height:1.05;color:var(--white);}
+.h1 em{font-style:normal;color:var(--blue2);}
+.rv{opacity:0;transform:translateY(26px);transition:opacity 0.75s cubic-bezier(.16,1,.3,1),transform 0.75s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+.btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.72rem 1.6rem;border-radius:3px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.22s;border:none;cursor:pointer;}
+.b-blue{background:var(--blue);color:#fff;}.b-blue:hover{background:var(--blue2);box-shadow:0 0 24px var(--blue-glow);}
+.b-ghost{background:transparent;color:var(--white2);border:1px solid var(--border2);}.b-ghost:hover{border-color:rgba(255,255,255,0.35);}
+.b-gray{background:var(--black4);color:var(--white3);border:1px solid var(--border);}.b-gray:hover{border-color:var(--gray2);}
+.t{font-family:var(--mono);font-size:0.62rem;padding:0.18rem 0.5rem;border-radius:2px;letter-spacing:0.03em;}
+.tb{background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.24);color:#93c5fd;}
+.tw2{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--white3);}
+.tg{background:rgba(136,136,136,0.08);border:1px solid rgba(136,136,136,0.16);color:var(--gray);}
+/* DEEP DIVE BLOCKS */
+.step{background:var(--black2);border:1px solid var(--border);border-radius:0 4px 4px 0;padding:1.6rem 2rem;margin-bottom:2px;}
+.step-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.8rem;}
+.step-title{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:0.5rem;}
+.before-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.7rem;}
+.before-card{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:3px;padding:0.8rem 1rem;}
+.before-card .bc-tit{font-size:0.77rem;color:#fca5a5;font-weight:500;margin-bottom:0.2rem;}
+.before-card .bc-desc{font-size:0.71rem;color:var(--gray);}
+.process-steps{display:flex;gap:0;flex-wrap:wrap;border:1px solid var(--border);border-radius:3px;overflow:hidden;}
+.ps{flex:1;min-width:150px;padding:1rem;border-right:1px solid var(--border);text-align:center;}
+.ps:last-child{border-right:none;}
+.ps-ico{font-size:1.2rem;margin-bottom:0.4rem;}
+.ps-num{font-family:var(--mono);font-size:0.6rem;color:var(--blue2);margin-bottom:0.3rem;}
+.ps-tit{font-size:0.77rem;color:var(--white);font-weight:500;margin-bottom:0.2rem;}
+.ps-desc{font-size:0.69rem;color:var(--gray);}
+/* TABLE */
+.cmp-table{width:100%;border-collapse:collapse;font-size:0.82rem;}
+.cmp-table th{text-align:left;padding:0.7rem 1rem;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;font-weight:400;border-bottom:1px solid var(--border);}
+.cmp-table td{padding:0.7rem 1rem;border-bottom:1px solid var(--border);}
+.cmp-table tr:last-child td{border-bottom:none;}
+.col-metric{color:var(--white3);font-weight:500;}
+.col-before{color:#fca5a5;background:rgba(239,68,68,0.03);}
+.col-after{color:#86efac;background:rgba(34,197,94,0.03);}
+.th-before{color:#ef4444;background:rgba(239,68,68,0.04);}
+.th-after{color:var(--green);background:rgba(34,197,94,0.04);}
+/* insights grid */
+.ins-grid{display:flex;flex-direction:column;gap:0.75rem;}
+.ins-row{display:flex;gap:0.7rem;align-items:flex-start;}
+.ins-title{font-size:0.82rem;color:var(--white);font-weight:500;}
+.ins-desc{font-size:0.75rem;color:var(--gray);}
+/* project nav pills */
+.proj-nav{display:flex;gap:0.6rem;margin-bottom:2rem;flex-wrap:wrap;}
+.pnav{padding:0.5rem 1.2rem;background:var(--black2);border:1px solid var(--border);border-radius:3px;font-family:var(--mono);font-size:0.68rem;color:var(--gray);text-decoration:none;transition:all 0.2s;}
+.pnav:hover,.pnav.act{background:var(--black3);border-color:var(--border2);color:var(--white);}
+.lv-dot{width:5px;height:5px;border-radius:50%;background:var(--green);display:inline-block;animation:lp 2s infinite;}
+@keyframes lp{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.4);}50%{box-shadow:0 0 0 5px rgba(34,197,94,0);}}
+.dc-lv{display:inline-flex;align-items:center;gap:0.35rem;background:rgba(0,0,0,0.85);border:1px solid rgba(34,197,94,0.35);color:var(--green);font-family:var(--mono);font-size:0.57rem;padding:0.17rem 0.48rem;border-radius:2px;letter-spacing:0.14em;}
+footer{background:var(--black);border-top:1px solid var(--border);padding:1.5rem 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;position:relative;z-index:2;}
+.fc{font-family:var(--mono);font-size:0.64rem;color:var(--gray2);}
+.fc span{color:var(--white3);}
+#btt{position:fixed;bottom:1.8rem;right:1.8rem;width:38px;height:38px;background:var(--black3);border:1px solid var(--border2);border-radius:3px;display:flex;align-items:center;justify-content:center;z-index:90;opacity:0;transform:translateY(12px);transition:all 0.28s;color:var(--white);font-size:0.82rem;text-decoration:none;}
+#btt.on{opacity:1;transform:translateY(0);}
+@media(max-width:900px){.nav-links{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;}.nav-links.open{display:flex;}.hamburger{display:flex;}}
+@media(max-width:768px){nav{padding:0 5%;}section{padding:60px 5%;}.page-hero{padding:110px 5% 50px;}.step{padding:1.2rem 1rem;}.process-steps{flex-direction:column;}.cmp-table{font-size:0.72rem;}.cmp-table th,.cmp-table td{padding:0.5rem 0.6rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">AM<span>.</span></a>
+  <ul class="nav-links" id="navL">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="dashboards.html" class="active">Dashboards</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="nav-hire">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="lbl rv">Project Deep Dives</div>
+  <div class="h1 rv d1">Full <em>Analysis</em></div>
+  <p class="rv d2" style="color:var(--gray);font-size:0.92rem;max-width:580px;margin-top:0.8rem;line-height:1.85;">Complete analytics lifecycle for each project — Problem → Before State → Process → Before/After Comparison → Dashboard → Key Insights.</p>
+</div>
+
+<section>
+  <!-- PROJECT NAV -->
+  <div class="proj-nav rv">
+    <a href="#project01" class="pnav act">01 · Sales Pipeline Analytics</a>
+    <a href="#project02" class="pnav">02 · Vendor Spend Intelligence</a>
+  </div>
+
+  <!-- ════════════════════════════════
+       PROJECT 01
+  ════════════════════════════════ -->
+  <div id="project01" style="scroll-margin-top:80px;">
+    <div class="rv" style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);">
+      <div style="font-family:var(--serif);font-size:3.5rem;font-weight:900;color:rgba(255,255,255,0.05);line-height:1;">01</div>
+      <div>
+        <div style="font-family:var(--mono);font-size:0.62rem;color:var(--blue2);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:0.3rem;">Completed · Power BI · Python · DAX · PostgreSQL</div>
+        <div style="font-family:var(--serif);font-size:1.6rem;font-weight:900;color:var(--white);line-height:1.1;">Sales Pipeline Analytics & Revenue Optimization</div>
+      </div>
+    </div>
+
+    <!-- 1. PROBLEM -->
+    <div class="step rv" style="border-left:3px solid #ef4444;">
+      <div class="step-label" style="color:#ef4444;">① Problem Statement</div>
+      <div class="step-title">B2B sales teams had no visibility into where deals were leaking</div>
+      <p style="color:var(--gray);font-size:0.84rem;line-height:1.85;">Sales managers were working blind — no way to see which pipeline stages were losing deals, which regions underperformed, or why high-value opportunities were lost more than smaller ones. All data sat in disconnected spreadsheets with no unified view.</p>
+    </div>
+
+    <!-- 2. BEFORE -->
+    <div class="step rv" style="border-left:3px solid var(--gray2);">
+      <div class="step-label" style="color:var(--gray2);">② Before — Raw Data State</div>
+      <div class="before-grid">
+        <div class="before-card"><div class="bc-tit">❌ Messy CRM data</div><div class="bc-desc">1,000+ records with duplicates, wrong stage names, missing values</div></div>
+        <div class="before-card"><div class="bc-tit">❌ No pipeline metrics</div><div class="bc-desc">Win rate, deal velocity, revenue forecast — all calculated manually</div></div>
+        <div class="before-card"><div class="bc-tit">❌ Zero regional insight</div><div class="bc-desc">No way to compare North vs South vs East vs West performance</div></div>
+        <div class="before-card"><div class="bc-tit">❌ No reporting system</div><div class="bc-desc">Weekly reports took 3+ hours to compile manually every time</div></div>
+      </div>
+    </div>
+
+    <!-- 3. PROCESS -->
+    <div class="step rv" style="border-left:3px solid var(--blue);">
+      <div class="step-label" style="color:var(--blue2);">③ Process — What I Did</div>
+      <div class="process-steps">
+        <div class="ps"><div class="ps-ico">🐍</div><div class="ps-num">STEP 1</div><div class="ps-tit">Data Generation</div><div class="ps-desc">Python · Faker · pandas — 1,000+ synthetic CRM records</div></div>
+        <div class="ps"><div class="ps-ico">🧹</div><div class="ps-num">STEP 2</div><div class="ps-tit">Data Cleaning</div><div class="ps-desc">45 duplicates removed, 23 stage variants standardised</div></div>
+        <div class="ps"><div class="ps-ico">🗄</div><div class="ps-num">STEP 3</div><div class="ps-tit">SQL Analysis</div><div class="ps-desc">PostgreSQL queries — win rate, velocity, revenue by region</div></div>
+        <div class="ps"><div class="ps-ico">📊</div><div class="ps-num">STEP 4</div><div class="ps-tit">Power BI Dashboard</div><div class="ps-desc">6 visuals, 8 DAX measures, interactive filters</div></div>
+      </div>
+    </div>
+
+    <!-- 4. BEFORE vs AFTER TABLE -->
+    <div class="step rv" style="border-left:3px solid var(--green);">
+      <div class="step-label" style="color:var(--green);">④ Before vs After — Comparison</div>
+      <div style="overflow-x:auto;">
+        <table class="cmp-table">
+          <thead><tr>
+            <th>METRIC</th>
+            <th class="th-before">❌ BEFORE</th>
+            <th class="th-after">✅ AFTER</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="col-metric">Data Quality</td><td class="col-before">Duplicates, nulls, 23 inconsistent stage names</td><td class="col-after">100% clean, standardised, analysis-ready dataset</td></tr>
+            <tr><td class="col-metric">Reporting Time</td><td class="col-before">3+ hours manual work per weekly report</td><td class="col-after">Under 5 minutes — automated Power BI refresh</td></tr>
+            <tr><td class="col-metric">Pipeline Visibility</td><td class="col-before">No view of deal stages or bottlenecks</td><td class="col-after">₹94.9M pipeline mapped — ₹12M bottleneck identified</td></tr>
+            <tr><td class="col-metric">Regional Performance</td><td class="col-before">No regional breakdown available</td><td class="col-after">East region flagged: 56.8% win rate, 137-day cycle</td></tr>
+            <tr><td class="col-metric">Win Rate Insight</td><td class="col-before">Unknown — no calculation in place</td><td class="col-after">63% overall · Large deal gap found (₹1.83L lost vs ₹1.24L won)</td></tr>
+            <tr><td class="col-metric">Business Impact</td><td class="col-before">No actionable recommendations</td><td class="col-after">12–15% efficiency gain projected via 3 recommendations</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 5. DASHBOARD -->
+    <div class="rv" style="border:1px solid var(--border);border-left:3px solid var(--gray2);border-radius:0 4px 4px 0;overflow:hidden;margin-bottom:2px;">
+      <div style="font-family:var(--mono);font-size:0.6rem;color:var(--gray2);letter-spacing:0.18em;text-transform:uppercase;padding:0.9rem 2rem;background:var(--black2);border-bottom:1px solid var(--border);">⑤ Dashboard Output</div>
+      <div style="position:relative;background:#0d0d0d;">
+        <img src="https://raw.githubusercontent.com/Aditya9740/sales-pipeline-analytics/main/sales-dashboard.png" alt="Sales Pipeline Dashboard" style="width:100%;display:block;object-fit:contain;"/>
+        <div style="position:absolute;top:1rem;right:1rem;"><span class="dc-lv"><span class="lv-dot"></span>LIVE</span></div>
+      </div>
+    </div>
+
+    <!-- 6. INSIGHTS + CTA -->
+    <div class="step rv" style="border-left:3px solid var(--blue2);">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+        <div>
+          <div class="step-label" style="color:var(--blue2);">⑥ Key Insights</div>
+          <div class="ins-grid">
+            <div class="ins-row"><span style="color:var(--blue2);margin-top:0.1rem;">→</span><div><div class="ins-title">₹12M stuck at Discovery stage</div><div class="ins-desc">High-value deals stall early — only 9% conversion rate</div></div></div>
+            <div class="ins-row"><span style="color:var(--blue2);margin-top:0.1rem;">→</span><div><div class="ins-title">Large deal coaching needed</div><div class="ins-desc">Avg lost deal (₹1.83L) greater than avg won deal (₹1.24L)</div></div></div>
+            <div class="ins-row"><span style="color:var(--blue2);margin-top:0.1rem;">→</span><div><div class="ins-title">East region needs urgent audit</div><div class="ins-desc">56.8% win rate, 137-day cycle vs 105-day North average</div></div></div>
+            <div class="ins-row"><span style="color:var(--green);margin-top:0.1rem;">✓</span><div><div class="ins-title">12–15% pipeline efficiency gain projected</div><div class="ins-desc">Via Discovery intervention + deal coaching + East audit</div></div></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:0.8rem;padding-left:2rem;border-left:1px solid var(--border);">
+          <div style="font-family:var(--mono);font-size:0.6rem;color:var(--gray2);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem;">Stack Used</div>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.8rem;"><span class="t tb">Python</span><span class="t tb">Power BI</span><span class="t tw2">DAX</span><span class="t tg">PostgreSQL</span><span class="t tg">pandas</span></div>
+          <a href="mailto:mahajanaditya814@gmail.com?subject=Dashboard Access Request — Sales Pipeline" class="btn b-blue" style="justify-content:center;">Request Access</a>
+          <a href="https://github.com/Aditya9740/sales-pipeline-analytics" class="btn b-gray" target="_blank" style="justify-content:center;">⬡ View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div><!-- end project01 -->
+
+  <!-- DIVIDER -->
+  <div style="margin:5rem 0;border-top:1px solid var(--border);position:relative;">
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--black);padding:0 1.5rem;font-family:var(--mono);font-size:0.65rem;color:var(--gray2);letter-spacing:0.15em;">NEXT PROJECT</div>
+  </div>
+
+  <!-- ════════════════════════════════
+       PROJECT 02
+  ════════════════════════════════ -->
+  <div id="project02" style="scroll-margin-top:80px;">
+    <div class="rv" style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);">
+      <div style="font-family:var(--serif);font-size:3.5rem;font-weight:900;color:rgba(255,255,255,0.05);line-height:1;">02</div>
+      <div>
+        <div style="font-family:var(--mono);font-size:0.62rem;color:var(--blue2);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:0.3rem;">Completed · Python · PostgreSQL · Power BI · pandas</div>
+        <div style="font-family:var(--serif);font-size:1.6rem;font-weight:900;color:var(--white);line-height:1.1;">Vendor Spend Intelligence & Cost Optimization System</div>
+      </div>
+    </div>
+
+    <!-- 1. PROBLEM -->
+    <div class="step rv" style="border-left:3px solid #ef4444;">
+      <div class="step-label" style="color:#ef4444;">① Problem Statement</div>
+      <div class="step-title">Companies spending crores had no idea where the money was going</div>
+      <p style="color:var(--gray);font-size:0.84rem;line-height:1.85;">Finance and procurement teams were managing ₹41+ Cr of vendor spend across 20 suppliers and 10 departments with zero visibility into concentration risk, overspending categories, or negotiation leverage. Cost savings were left on the table year after year.</p>
+    </div>
+
+    <!-- 2. BEFORE -->
+    <div class="step rv" style="border-left:3px solid var(--gray2);">
+      <div class="step-label" style="color:var(--gray2);">② Before — Raw Data State</div>
+      <div class="before-grid">
+        <div class="before-card"><div class="bc-tit">❌ Unstructured spend data</div><div class="bc-desc">582 transactions in raw CSV — no categorisation or vendor scoring</div></div>
+        <div class="before-card"><div class="bc-tit">❌ No vendor benchmarking</div><div class="bc-desc">No way to compare vendors on price, reliability, or risk</div></div>
+        <div class="before-card"><div class="bc-tit">❌ Budget leakage unknown</div><div class="bc-desc">Departments overspending — nobody knew which or by how much</div></div>
+        <div class="before-card"><div class="bc-tit">❌ No savings strategy</div><div class="bc-desc">No data to justify vendor renegotiation or consolidation</div></div>
+      </div>
+    </div>
+
+    <!-- 3. PROCESS -->
+    <div class="step rv" style="border-left:3px solid var(--blue);">
+      <div class="step-label" style="color:var(--blue2);">③ Process — What I Did</div>
+      <div class="process-steps">
+        <div class="ps"><div class="ps-ico">🐍</div><div class="ps-num">STEP 1</div><div class="ps-tit">Data Generation</div><div class="ps-desc">582 synthetic Indian B2B transactions — 20 vendors, 10 depts, 2 years</div></div>
+        <div class="ps"><div class="ps-ico">🧹</div><div class="ps-num">STEP 2</div><div class="ps-tit">Data Cleaning</div><div class="ps-desc">Standardised vendor names, fixed nulls, categorised spend by type</div></div>
+        <div class="ps"><div class="ps-ico">🗄</div><div class="ps-num">STEP 3</div><div class="ps-tit">SQL Analysis</div><div class="ps-desc">12 SQL queries — spend concentration, vendor scoring, budget variance</div></div>
+        <div class="ps"><div class="ps-ico">📊</div><div class="ps-num">STEP 4</div><div class="ps-tit">Power BI Dashboard</div><div class="ps-desc">Vendor risk matrix, spend heatmap, cost savings scenario model</div></div>
+      </div>
+    </div>
+
+    <!-- 4. BEFORE vs AFTER TABLE -->
+    <div class="step rv" style="border-left:3px solid var(--green);">
+      <div class="step-label" style="color:var(--green);">④ Before vs After — Comparison</div>
+      <div style="overflow-x:auto;">
+        <table class="cmp-table">
+          <thead><tr>
+            <th>METRIC</th>
+            <th class="th-before">❌ BEFORE</th>
+            <th class="th-after">✅ AFTER</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="col-metric">Spend Visibility</td><td class="col-before">No category or vendor-level breakdown</td><td class="col-after">₹41.54Cr fully mapped — by vendor, dept, category, month</td></tr>
+            <tr><td class="col-metric">Vendor Risk</td><td class="col-before">Unknown — no concentration analysis</td><td class="col-after">Top 3 vendors = 42% spend flagged as high concentration risk</td></tr>
+            <tr><td class="col-metric">Budget Variance</td><td class="col-before">Departments overspending — undetected</td><td class="col-after">IT & Procurement: 18–22% over budget — flagged for action</td></tr>
+            <tr><td class="col-metric">Cost Savings</td><td class="col-before">No savings strategy or data to support it</td><td class="col-after">₹2.1 Cr annualised savings identified — 7–8% on total spend</td></tr>
+            <tr><td class="col-metric">Reporting</td><td class="col-before">Manual spreadsheet — took days to prepare</td><td class="col-after">Live Power BI dashboard — updated instantly, shareable</td></tr>
+            <tr><td class="col-metric">Negotiation Power</td><td class="col-before">No data to negotiate better vendor contracts</td><td class="col-after">Vendor performance scores ready for renegotiation meetings</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 5. DASHBOARD -->
+    <div class="rv" style="border:1px solid var(--border);border-left:3px solid var(--gray2);border-radius:0 4px 4px 0;overflow:hidden;margin-bottom:2px;">
+      <div style="font-family:var(--mono);font-size:0.6rem;color:var(--gray2);letter-spacing:0.18em;text-transform:uppercase;padding:0.9rem 2rem;background:var(--black2);border-bottom:1px solid var(--border);">⑤ Dashboard Output</div>
+      <div style="position:relative;background:#0d0d0d;">
+        <img src="https://raw.githubusercontent.com/Aditya9740/aditya-analytics-consulting/main/vendor-dashboard.png" alt="Vendor Spend Dashboard" style="width:100%;display:block;object-fit:contain;"/>
+        <div style="position:absolute;top:1rem;right:1rem;"><span class="dc-lv"><span class="lv-dot"></span>LIVE</span></div>
+      </div>
+    </div>
+
+    <!-- 6. INSIGHTS + CTA -->
+    <div class="step rv" style="border-left:3px solid var(--blue2);">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+        <div>
+          <div class="step-label" style="color:var(--blue2);">⑥ Key Insights</div>
+          <div class="ins-grid">
+            <div class="ins-row"><span style="color:var(--blue2);margin-top:0.1rem;">→</span><div><div class="ins-title">₹41.54Cr spend fully mapped</div><div class="ins-desc">582 transactions across 20 vendors and 10 departments</div></div></div>
+            <div class="ins-row"><span style="color:var(--blue2);margin-top:0.1rem;">→</span><div><div class="ins-title">Top 3 vendors = 42% concentration risk</div><div class="ins-desc">Over-reliance on few suppliers — supply chain vulnerability</div></div></div>
+            <div class="ins-row"><span style="color:var(--blue2);margin-top:0.1rem;">→</span><div><div class="ins-title">IT & Procurement 18–22% over budget</div><div class="ins-desc">Largest budget variance departments — immediate action needed</div></div></div>
+            <div class="ins-row"><span style="color:var(--green);margin-top:0.1rem;">✓</span><div><div class="ins-title">₹2.1 Cr annualised savings identified</div><div class="ins-desc">7–8% reduction via vendor consolidation & renegotiation</div></div></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;justify-content:center;gap:0.8rem;padding-left:2rem;border-left:1px solid var(--border);">
+          <div style="font-family:var(--mono);font-size:0.6rem;color:var(--gray2);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.4rem;">Stack Used</div>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:0.8rem;"><span class="t tb">Python</span><span class="t tw2">PostgreSQL</span><span class="t tb">Power BI</span><span class="t tg">pandas</span><span class="t tg">NumPy</span></div>
+          <a href="mailto:mahajanaditya814@gmail.com?subject=Dashboard Access Request — Vendor Spend" class="btn b-blue" style="justify-content:center;">Request Access</a>
+          <a href="https://github.com/Aditya9740" class="btn b-gray" target="_blank" style="justify-content:center;">⬡ View on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div><!-- end project02 -->
+
+  <!-- BOTTOM NAV -->
+  <div class="rv" style="margin-top:4rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <a href="projects.html" class="btn b-gray">← Back to Projects</a>
+    <a href="contact.html" class="btn b-blue">Start a Similar Project →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fc">© 2026 <span>Aditya Mahajan</span> · All rights reserved</div>
+  <div class="fc" style="display:flex;gap:1.2rem;">
+    <a href="projects.html" style="color:var(--gray2);text-decoration:none;font-family:var(--mono);font-size:0.64rem;">Projects</a>
+    <a href="contact.html" style="color:var(--gray2);text-decoration:none;font-family:var(--mono);font-size:0.64rem;">Contact</a>
+  </div>
+</footer>
+<a href="#" id="btt">↑</a>
+<script>
+const rvs=document.querySelectorAll('.rv');
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:0.05});
+rvs.forEach(r=>io.observe(r));
+window.addEventListener('scroll',()=>{document.getElementById('btt').classList.toggle('on',window.scrollY>300);});
+function toggleNav(){document.getElementById('navL').classList.toggle('open');}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navL').classList.remove('open')));
+// highlight active proj nav pill on scroll
+const p1=document.getElementById('project01');
+const p2=document.getElementById('project02');
+const pn=document.querySelectorAll('.pnav');
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY+100;
+  if(p2&&s>=p2.offsetTop){pn.forEach(p=>p.classList.remove('act'));if(pn[1])pn[1].classList.add('act');}
+  else{pn.forEach(p=>p.classList.remove('act'));if(pn[0])pn[0].classList.add('act');}
+});
+</script>
+</body>
+</html>

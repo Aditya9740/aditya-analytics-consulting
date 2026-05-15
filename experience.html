@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Experience & Certifications — Aditya Mahajan</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--black:#000;--black2:#0a0a0a;--black3:#111;--black4:#1a1a1a;--black5:#222;--white:#fff;--white2:#f0f0f0;--white3:#ccc;--gray:#888;--gray2:#555;--blue:#2563eb;--blue2:#3b82f6;--blue-glow:rgba(37,99,235,0.35);--green:#22c55e;--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);--serif:'Playfair Display',serif;--sans:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;overflow-x:hidden;line-height:1.75;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");pointer-events:none;z-index:1;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid var(--border);background:rgba(0,0,0,0.92);backdrop-filter:blur(24px);}
+.logo{font-family:var(--serif);font-size:1.3rem;font-weight:900;color:var(--white);text-decoration:none;}.logo span{color:var(--blue2);}
+.nav-links{display:flex;gap:1.8rem;list-style:none;align-items:center;}
+.nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--white);}
+.nav-hire{background:var(--blue)!important;color:var(--white)!important;padding:0.4rem 1rem;border-radius:3px;}
+.nav-hire:hover{background:var(--blue2)!important;box-shadow:0 0 18px var(--blue-glow)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);}
+section{position:relative;z-index:2;padding:110px 6%;}
+.lbl{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.28em;color:var(--gray2);text-transform:uppercase;margin-bottom:0.8rem;}
+.h1{font-family:var(--serif);font-size:clamp(2rem,3.8vw,3.4rem);font-weight:900;letter-spacing:-0.03em;line-height:1.05;color:var(--white);}
+.h1 em{font-style:normal;color:var(--blue2);}
+.rv{opacity:0;transform:translateY(26px);transition:opacity 0.75s cubic-bezier(.16,1,.3,1),transform 0.75s cubic-bezier(.16,1,.3,1);}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}.d4{transition-delay:0.4s;}
+.btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.72rem 1.6rem;border-radius:3px;font-family:var(--mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.22s;border:none;cursor:pointer;}
+.b-blue{background:var(--blue);color:#fff;}.b-blue:hover{background:var(--blue2);box-shadow:0 0 24px var(--blue-glow);}
+.b-ghost{background:transparent;color:var(--white2);border:1px solid var(--border2);}.b-ghost:hover{border-color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.03);}
+.b-gray{background:var(--black4);color:var(--white3);border:1px solid var(--border);}.b-gray:hover{border-color:var(--gray2);background:var(--black5);}
+.t{font-family:var(--mono);font-size:0.62rem;padding:0.18rem 0.5rem;border-radius:2px;letter-spacing:0.03em;}
+.tb{background:rgba(37,99,235,0.12);border:1px solid rgba(37,99,235,0.24);color:#93c5fd;}
+.tw2{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--white3);}
+.tg{background:rgba(136,136,136,0.08);border:1px solid rgba(136,136,136,0.16);color:var(--gray);}
+
+/* STATS STRIP */
+.stats-strip{display:flex;border:1px solid var(--border);border-radius:3px;overflow:hidden;margin-bottom:3.5rem;}
+.stat{flex:1;padding:1.4rem 1rem;text-align:center;border-right:1px solid var(--border);background:var(--black3);}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:var(--serif);font-size:1.9rem;font-weight:900;color:var(--white);line-height:1;}
+.stat-l{font-family:var(--mono);font-size:0.58rem;color:var(--gray);letter-spacing:0.1em;margin-top:0.3rem;}
+
+/* EXP CARD */
+.exp-card{background:var(--black3);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin-bottom:2rem;position:relative;}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--blue2));}
+.exp-top{padding:1.8rem 2rem 1.4rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
+.exp-co{display:flex;align-items:center;gap:1rem;}
+.co-icon{width:44px;height:44px;background:var(--black5);border:1px solid var(--border2);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.co-name{font-family:var(--serif);font-size:1.15rem;font-weight:800;color:var(--white);margin-bottom:0.2rem;}
+.co-sub{font-family:var(--mono);font-size:0.62rem;color:var(--gray);letter-spacing:0.06em;}
+.badge-done{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.22);color:#4ade80;padding:0.3rem 0.85rem;border-radius:3px;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.08em;flex-shrink:0;}
+.badge-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;}
+.meta-row{padding:0 2rem 1.4rem;display:flex;flex-wrap:wrap;gap:0.6rem;}
+.meta-pill{display:inline-flex;align-items:center;gap:0.4rem;background:var(--black4);border:1px solid var(--border);border-radius:3px;padding:0.28rem 0.75rem;font-family:var(--mono);font-size:0.62rem;color:var(--gray);letter-spacing:0.06em;}
+.card-div{height:1px;background:var(--border);margin:0 2rem;}
+.exp-body{padding:1.5rem 2rem;}
+.exp-body h4{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray2);margin-bottom:1rem;}
+.resp-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.resp-list li{display:flex;gap:0.75rem;font-size:0.88rem;color:var(--white3);line-height:1.65;}
+.resp-list li::before{content:'▸';color:var(--blue2);flex-shrink:0;margin-top:0.12rem;}
+.resp-list li strong{color:var(--white);font-weight:500;}
+.skills-row{padding:1.4rem 2rem 1.75rem;}
+.skills-row h4{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray2);margin-bottom:0.85rem;}
+.tgs{display:flex;flex-wrap:wrap;gap:0.38rem;}
+
+/* CERT CARD */
+.cert-card{background:var(--black3);border:1px solid var(--border);border-radius:3px;padding:1.5rem 1.8rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;transition:border-color 0.2s;}
+.cert-card:hover{border-color:rgba(37,99,235,0.4);}
+.cert-left{display:flex;align-items:center;gap:1rem;}
+.cert-ic{width:40px;height:40px;background:var(--black5);border:1px solid var(--border2);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.cert-name{font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.2rem;}
+.cert-org{font-family:var(--mono);font-size:0.62rem;color:var(--gray);letter-spacing:0.06em;}
+.cert-right{text-align:right;flex-shrink:0;}
+.cert-id{font-family:var(--mono);font-size:0.6rem;color:var(--gray2);background:var(--black4);border:1px solid var(--border);padding:0.18rem 0.55rem;border-radius:2px;display:inline-block;margin-bottom:0.4rem;}
+.cert-date{font-family:var(--mono);font-size:0.65rem;color:#4ade80;display:block;}
+.badge-soon{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.22);color:#93c5fd;padding:0.28rem 0.75rem;border-radius:3px;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.06em;}
+
+/* EDU CARD */
+.edu-card{background:var(--black3);border:1px solid var(--border);border-radius:3px;padding:1.5rem 1.8rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;}
+.edu-left{display:flex;align-items:center;gap:1rem;}
+.edu-ic{width:40px;height:40px;background:var(--black5);border:1px solid var(--border2);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.edu-name{font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:0.2rem;}
+.edu-sub{font-family:var(--mono);font-size:0.62rem;color:var(--gray);letter-spacing:0.06em;}
+
+footer{background:var(--black);border-top:1px solid var(--border);padding:1.5rem 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;position:relative;z-index:2;}
+.fc{font-family:var(--mono);font-size:0.64rem;color:var(--gray2);}
+.fc span{color:var(--white3);}
+.fc a{color:var(--gray2);text-decoration:none;transition:color 0.2s;}.fc a:hover{color:var(--white);}
+#btt{position:fixed;bottom:1.8rem;right:1.8rem;width:38px;height:38px;background:var(--black3);border:1px solid var(--border2);border-radius:3px;display:flex;align-items:center;justify-content:center;z-index:90;opacity:0;transform:translateY(12px);transition:all 0.28s;color:var(--white);font-size:0.82rem;text-decoration:none;}
+#btt.on{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){.nav-links{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.97);flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;}.nav-links.open{display:flex;}.hamburger{display:flex;}}
+@media(max-width:768px){nav{padding:0 5%;}section{padding:80px 5%;}.exp-top{flex-direction:column;}.cert-card,.edu-card{flex-direction:column;}.cert-right{text-align:left;}.stats-strip{flex-direction:column;}.stat{border-right:none;border-bottom:1px solid var(--border);}.stat:last-child{border-bottom:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">AM<span>.</span></a>
+  <ul class="nav-links" id="navL">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="dashboards.html">Dashboards</a></li>
+    <li><a href="experience.html" class="active">Experience</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html" class="nav-hire">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<section style="background:var(--black2);border-top:1px solid var(--border);">
+  <div class="lbl rv">Career Profile</div>
+  <div class="h1 rv d1">Experience &amp; <em>Certifications</em></div>
+  <p class="rv d2" style="color:var(--gray);font-size:0.93rem;max-width:520px;margin:1rem 0 3rem;line-height:1.9;">Real-world data work — internship, credentials, and education all in one place.</p>
+
+  <!-- STATS -->
+  <div class="stats-strip rv d2">
+    <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Months Interned</div></div>
+    <div class="stat"><div class="stat-n">₹32L+</div><div class="stat-l">Savings Identified</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-l">Live Projects</div></div>
+    <div class="stat"><div class="stat-n">1</div><div class="stat-l">Certificate Earned</div></div>
+  </div>
+
+  <!-- WORK EXP -->
+  <div class="lbl rv" style="margin-bottom:1.2rem;">Work Experience</div>
+
+  <div class="exp-card rv d1">
+    <div class="exp-top">
+      <div class="exp-co">
+        <div class="co-icon">⚡</div>
+        <div>
+          <div class="co-name">Dyashin Technosoft Pvt Ltd.</div>
+          <div class="co-sub">Data Science &amp; Data Analytics Intern · Bengaluru, India · Hybrid</div>
+        </div>
+      </div>
+      <div class="badge-done"><div class="badge-dot"></div>Completed</div>
+    </div>
+
+    <div class="meta-row">
+      <div class="meta-pill">📅 Feb 2026 – May 2026</div>
+      <div class="meta-pill">⏱ 3 Months 10 Days</div>
+      <div class="meta-pill">📍 Bengaluru, Karnataka</div>
+      <div class="meta-pill">🏢 Hybrid</div>
+    </div>
+
+    <div class="card-div"></div>
+
+    <div class="exp-body">
+      <h4>Responsibilities</h4>
+      <ul class="resp-list">
+        <li>Performed <strong>data cleaning and transformation</strong> using Python (pandas, NumPy) on real-world datasets — handled missing values, duplicate records, and inconsistent categorical data</li>
+        <li>Wrote structured <strong>SQL queries</strong> (joins, aggregations, subqueries) to extract business performance metrics and department-level summaries for reporting</li>
+        <li>Supported development of <strong>Power BI dashboards</strong> for KPI tracking, operational trend analysis, and management-level reporting</li>
+        <li>Participated in a <strong>practical application case study</strong> to implement and validate end-to-end Data Science concepts on real datasets</li>
+        <li>Prepared structured <strong>analytical reports</strong> and documented data workflows to support stakeholder review and audit traceability</li>
+        <li>Applied <strong>ETL fundamentals</strong> to convert raw datasets into analysis-ready formats for downstream reporting</li>
+      </ul>
+    </div>
+
+    <div class="card-div"></div>
+
+    <div class="skills-row">
+      <h4>Skills Applied</h4>
+      <div class="tgs">
+        <span class="t tb">Python</span><span class="t tb">pandas</span><span class="t tb">NumPy</span><span class="t tb">SQL</span><span class="t tb">PostgreSQL</span><span class="t tw2">Power BI</span><span class="t tw2">DAX</span><span class="t tw2">Power Query</span><span class="t tg">ETL</span><span class="t tg">Data Cleaning</span><span class="t tg">Dashboard Design</span><span class="t tg">Business Reporting</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTS -->
+  <div class="lbl rv" style="margin:2.5rem 0 1.2rem;">Certifications</div>
+
+  <div class="cert-card rv d1">
+    <div class="cert-left">
+      <div class="cert-ic">🏅</div>
+      <div>
+        <div class="cert-name">Internship Completion Certificate — Data Science &amp; Analytics</div>
+        <div class="cert-org">Dyashin Technosoft Pvt Ltd. · Bengaluru</div>
+      </div>
+    </div>
+    <div class="cert-right">
+      <div class="cert-id">IN-BG-VCIP-0526-A748</div>
+      <span class="cert-date">✓ Issued: 12 May 2026</span>
+    </div>
+  </div>
+
+  <div class="cert-card rv d2" style="border-style:dashed;opacity:0.55;">
+    <div class="cert-left">
+      <div class="cert-ic">📊</div>
+      <div>
+        <div class="cert-name">Microsoft Power BI Data Analyst — PL-300</div>
+        <div class="cert-org">Microsoft · In Progress</div>
+      </div>
+    </div>
+    <div class="cert-right">
+      <span class="badge-soon">🎯 Upcoming</span>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="lbl rv" style="margin:2.5rem 0 1.2rem;">Education</div>
+
+  <div class="edu-card rv d1">
+    <div class="edu-left">
+      <div class="edu-ic">🎓</div>
+      <div>
+        <div class="edu-name">Bachelor of Engineering — CSE (IoT &amp; CSBT)</div>
+        <div class="edu-sub">East Point College of Engineering &amp; Technology · Bengaluru · Nov 2022 – Jun 2026</div>
+      </div>
+    </div>
+    <div class="badge-soon">🎓 Graduating Jun 2026</div>
+  </div>
+
+</section>
+
+<footer>
+  <div class="fc">© 2026 <span>Aditya Mahajan</span> · All rights reserved</div>
+  <div style="display:flex;gap:1.2rem;">
+    <a href="projects.html" class="fc">Projects</a>
+    <a href="services.html" class="fc">Services</a>
+    <a href="contact.html" class="fc">Contact</a>
+  </div>
+</footer>
+<a href="#" id="btt">↑</a>
+
+<script>
+const rvs=document.querySelectorAll('.rv');
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');}),{threshold:0.08});
+rvs.forEach(r=>io.observe(r));
+window.addEventListener('scroll',()=>{document.getElementById('btt').classList.toggle('on',window.scrollY>400);});
+function toggleNav(){document.getElementById('navL').classList.toggle('open');}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navL').classList.remove('open')));
+</script>
+</body>
+</html>
